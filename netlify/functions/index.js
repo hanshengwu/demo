@@ -1,3 +1,4 @@
+exports.handler = require('index').handler
 const express = require('express')
 const app = express()
 
