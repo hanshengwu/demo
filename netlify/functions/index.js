@@ -1,16 +1,9 @@
-exports.handler = async (event) => {
-  // Example of Spotify API "Client Credentials" authorization
-  const express = require('express')
-  const app = express()
+module.exports.handler = async (event, context) => {
+  const { name } = event.queryStringParameters
+  const message = `Hello ${name || "world"}!`
 
-  app.get('/', (req, res) => {
-  res.send('欢迎使用云托管！')
-})
-
-  const port = process.env.PORT || 80
-  app.listen(port, () => {
-  console.log('服务启动成功，端口：', port)
-})
-
-
-};
+  return {
+    statusCode: 200,
+    body: message
+  }
+}
