@@ -4,7 +4,7 @@
   "description": "Simple example in Node",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node test.js"
   },
   "author": "",
   "license": "Apache-2.0",
