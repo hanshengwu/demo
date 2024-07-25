@@ -1,9 +1,12 @@
-module.exports.handler = async (event, context) => {
-  const { name } = event.queryStringParameters
-  const message = `Hello ${name || "world"}!`
+const API_ENDPOINT = 'https://cat-fact.herokuapp.com/facts';
 
-  return {
-    statusCode: 200,
-    body: message
+export default async (request, context) => {
+  try {
+    const response = await fetch(API_ENDPOINT);
+    const data = await response.json();
+    return Response.json({ data });
+  } catch (error) {
+    console.log(error);
+    return Response.json({ error: 'Failed fetching data' }, { status: 500 });
   }
-}
+};
